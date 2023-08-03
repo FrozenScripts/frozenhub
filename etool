@@ -8,10 +8,6 @@ vim:SendKeyEvent(true, keytoclick, false, game)
 end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
-game.StarterGui:SetCore("SendNotification", {
-    Title = "backupalt#3386 .gg/productions";
-    Text = "join .gg/productions";
-
 })
 
 local player = game.Players.LocalPlayer
