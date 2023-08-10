@@ -1,0 +1,11 @@
+-- Made By Flexsz
+-- Works On All Executors 
+-- Works On Mobile Executors
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Flexzstr/FlyScript/main/Beta"))()
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
