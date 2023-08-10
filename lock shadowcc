@@ -1,0 +1,176 @@
+getgenv().keytoclick = "Q"
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name ="Shadow Lock"
+tool.Activated:connect(function()
+    local vim = game:service("VirtualInputManager")
+vim:SendKeyEvent(true, keytoclick, false, game)
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "vackup#6002";
+    Text = "brrrr skibidi dop dop dop dop yes yes yes";
+
+})
+
+local player = game.Players.LocalPlayer
+
+local function connectCharacterAdded()
+    player.CharacterAdded:Connect(onCharacterAdded)
+end
+
+connectCharacterAdded()
+
+player.CharacterRemoving:Connect(function()
+    tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+getgenv().Key = Enum.KeyCode.Q
+getgenv().Prediction = 0.135
+getgenv().Partz = "UpperTorso" -- LowerTorso, HumanoidRootPart,Head,UpperTorso
+getgenv().AntiGroundShots = false ---- Testing Feature Lmao
+getgenv().AutoPred = false
+
+    	local Locking = true
+    local Draw = Drawing.new
+local Square = Drawing.new("Square")
+Square.Visible = true
+Square.Color = Color3.fromRGB(255, 255, 255)
+Square.Thickness = 5
+Square.Size = Vector2.new(6,6)
+Square.Filled = true
+
+game:GetService("UserInputService").InputBegan:Connect(function(keygo,ok)
+           if (not ok) then
+           if (keygo.KeyCode == getgenv().Key) then
+               Locking = not Locking
+               if Locking then
+               Plr =  getClosestPlayerToCursor()
+elseif not Locking then
+        
+end
+end
+end
+end)
+	function getClosestPlayerToCursor()
+		local closestPlayer
+		local shortestDistance = math.huge
+
+if getgenv().AutoPred == true then
+    local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local split = string.split(pingvalue,'(')
+    local ping = tonumber(split[1])
+    if ping < 360 then
+        getgenv().Prediction = 0.16537
+    elseif ping < 280 then
+        getgenv().Prediction = 0.16780
+    elseif ping < 270 then
+        getgenv().Prediction = 0.195566
+    elseif ping < 260 then
+        getgenv().Prediction = 0.175566
+    elseif ping < 250 then
+        getgenv().Prediction = 0.1651
+    elseif ping < 240 then
+        getgenv().Prediction = 0.16780
+    elseif ping < 230 then
+        getgenv().Prediction = 0.15692
+    elseif ping < 220 then
+        getgenv().Prediction = 0.165566
+    elseif ping < 210 then
+        getgenv().Prediction = 0.165566
+    elseif ping < 200 then
+        getgenv().Prediction = 0.16942
+    elseif ping < 190 then
+        getgenv().Prediction = 0.166547
+    elseif ping < 180 then
+        getgenv().Prediction = 0.19284
+    elseif ping < 170 then
+        getgenv().Prediction = 0.1923111
+    elseif ping < 160 then
+        getgenv().Prediction = 0.16
+    elseif ping < 150 then
+        getgenv().Prediction = 0.15
+    elseif ping < 140 then
+        getgenv().Prediction = 0.14
+    elseif ping < 130 then
+        getgenv().Prediction = 0.156692
+    elseif ping < 120 then
+        getgenv().Prediction = 0.143765
+    elseif ping < 110 then
+        getgenv().Prediction = 0.143765
+    elseif ping < 100 then
+        getgenv().Prediction = 0.1455
+    elseif ping < 90 then
+        getgenv().Prediction = 0.135
+    elseif ping < 80 then
+        getgenv().Prediction = 0.1347
+    elseif ping < 70 then
+        getgenv().Prediction = 0.119
+    elseif ping < 60 then
+        getgenv().Prediction = 0.12731
+    elseif ping < 50 then
+        getgenv().Prediction = 0.127668
+    elseif ping < 40 then
+        getgenv().Prediction = 0.125
+    elseif ping < 30 then
+        getgenv().Prediction = 0.11
+    elseif ping < 20 then
+        getgenv().Prediction = 0.12588
+    elseif ping < 10 then
+        getgenv().Prediction = 0.9
+    end
+end
+
+		for i, v in pairs(game.Players:GetPlayers()) do
+			if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("LowerTorso") then
+				local pos =  game:GetService"Workspace".CurrentCamera:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+				local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new( game.Players.LocalPlayer:GetMouse().X,  game.Players.LocalPlayer:GetMouse().Y)).magnitude
+				if magnitude < shortestDistance then
+					closestPlayer = v
+					shortestDistance = magnitude
+				end
+			end
+		end
+		return closestPlayer
+	end
+
+	local rawmetatable = getrawmetatable(game)
+	local old = rawmetatable.__namecall
+	setreadonly(rawmetatable, false)
+	rawmetatable.__namecall = newcclosure(function(...)
+		local args = {...}
+		if Locking and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+			args[3] = Plr.Character[getgenv().Partz].Position+(Plr.Character[getgenv().Partz].Velocity*Prediction)
+			return old(unpack(args))
+		end
+		return old(...)
+	end)
+	
+	
+game.RunService.Stepped:Connect(function()
+    if Plr ~= nil and Locking then
+         local Vector, OnScreen = workspace.CurrentCamera:worldToViewportPoint(Plr.Character[getgenv().Partz].Position+(Plr.Character[getgenv().Partz].Velocity*Prediction))
+         if OnScreen then
+        Square.Visible = true
+        Square.Position = Vector2.new(Vector.X,Vector.Y)
+        end
+        elseif not Locking then
+            Square.Visible = false
+        end
+        
+end)
+
+if getgenv().AntiGroundShots == true then
+				pcall(function()
+                    local TargetVelv5 = Plr.Character[getgenv().Partz]
+                    TargetVelv5.Velocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 0.5), TargetVelv5.Velocity.Z)
+                    TargetVelv5.AssemblyLinearVelocity = Vector3.new(TargetVelv5.Velocity.X, (TargetVelv5.Velocity.Y * 0.5), TargetVelv5.Velocity.Z)
+                end)
+			end
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
