@@ -1,0 +1,231 @@
+function Lion(tt,tx,cc)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = tt;
+        Text = tx;
+        Duration = cc;
+    })
+end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RelkzzRebranded/Bypassed---OBFUSCATED..../main/Adonis%20BYPASS.lua"))()
+Lion("Imperial", "Bypassing Adonis...", 1)
+wait(1)
+
+Lion("Imperial", "Loaded! | PC VERSION", 1)
+
+-- No Skiddies allowed in here
+local CC = game:GetService"Workspace".CurrentCamera
+    local Plr
+    local enabled = falseWD
+    getgenv().accomidationfactor = 0.1335742
+    local mouse = game.Players.LocalPlayer:GetMouse()
+    local placemarker = Instance.new("Part", game.Workspace)
+    getgenv().NoDelay = false
+    getgenv().autopred = true
+    
+
+
+if getgenv().NoDelay == true then
+      local FuckDelay = game:GetService("CorePackages").Packages
+            FuckDelay:Destroy()
+        end
+
+    function makemarker(Parent, Adornee, Color, Size, Size2)
+        local e = Instance.new("BillboardGui", Parent)
+        e.Name = "ImperialistLion"
+        e.Adornee = Adornee
+        e.Size = UDim2.new(Size, Size2, Size, Size2)
+        e.AlwaysOnTop = true
+        local a = Instance.new("Frame", e)
+        a.Size = UDim2.new(2, 0, 2, 0)
+        a.BackgroundTransparency = 0
+        a.BackgroundColor3 = Color
+        local g = Instance.new("UICorner", a)
+        g.CornerRadius = UDim.new(70, 70)
+        return(e)
+    end
+
+getgenv().Nihao = true ---- dont disable or bug
+
+    local data = game.Players:GetPlayers()
+    function noob(player)
+        local character
+        repeat wait() until player.Character
+        local handler = makemarker(guimain, player.Character:WaitForChild("HumanoidRootPart"), Color3.fromRGB(0, 0, 0), 0.3, 3)
+        handler.Name = player.Name
+        player.CharacterAdded:connect(function(Char) handler.Adornee = Char:WaitForChild("HumanoidRootPart") end)
+
+getgenv().testing = true ---- Do not disable or bug
+
+        spawn(function()
+            while wait() do
+                if player.Character then
+                    TextLabel.Text = player.Name..tostring(player:WaitForChild("leaderstats").Wanted.Value).." | "..tostring(math.floor(player.Character:WaitForChild("Humanoid").Health))
+                end
+            end
+        end)
+    end
+
+    for i = 1, #data do
+        if data[i] ~= game.Players.LocalPlayer then
+            noob(data[i])
+        end
+    end
+
+local function get_calculated_velocity(obj)
+    if nil_check(obj) and obj.Character and obj.Character:FindFirstChild(HumanoidRootPart) then
+        local root = obj.Character.HumanoidRootPart
+        local character = obj.Character 
+
+        local currentPosition = root.Position
+        local currentTime = tick() 
+
+        wait(0.00350) 
+
+        local newPosition = root.Position
+        local newTime = tick()
+        
+        local distanceTraveled = (newPosition - currentPosition) 
+
+        local timeInterval = newTime - currentTime
+        local velocity = distanceTraveled / timeInterval
+        currentPosition = newPosition
+        currentTime = newTime
+        return velocity
+    end
+end
+
+    game.Players.PlayerAdded:connect(function(Player)
+        noob(Player)
+    end)
+
+_G.Types = {
+    Ball = Enum.PartType.Ball,
+    Block = Enum.PartType.Block,
+    Cylinder = Enum.PartType.Cylinder
+}
+    spawn(function()
+        placemarker.Anchored = true
+        placemarker.CanCollide = false
+        placemarker.Shape = _G.Types.Ball
+        placemarker.Material = Enum.Material.ForceField
+        placemarker.Size = Vector3.new(10, 10, 10)
+        placemarker.Transparency = -0.5
+        makemarker(placemarker, placemarker, Color3.fromRGB(0, 0, 0), 0.55, 0)
+        wait()
+        placemarker.Color = Color3.fromRGB(139, 0, 0)
+    end)    
+
+local Part = Instance.new("Part")
+         Part.Name = "gay"
+          Part.Anchored = true
+           Part.CanCollide = false
+            Part.Transparency = -4
+             Part.Material = Enum.Material.ForceField
+              Part.Shape = _G.Types.Ball
+               Part.Size = Vector3.new(10.5,10.5,10.5)
+                Part.Color = Color3.fromRGB(0, 0, 0)
+                 Part.Parent = game.Workspace
+
+mouse.KeyDown:Connect(function(k)
+    if k ~= "q" then return end
+    if enabled then
+        enabled = false
+        Lion("Imperial", "Unlocked", 3)
+    else
+        enabled = true 
+        Plr = getClosestPlayerToCursor()
+        Lion("Imperial", "Target:"..Plr.Character.Humanoid.DisplayName, 3)
+    end    
+end)
+
+getgenv().testingg = true ---- do not disable or bug
+
+    function getClosestPlayerToCursor()
+        local closestPlayer
+        local shortestDistance = math.huge
+
+        for i, v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") then
+                local pos = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+                local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(mouse.X, mouse.Y)).magnitude
+                if magnitude < shortestDistance then
+                    closestPlayer = v
+                    shortestDistance = magnitude
+                end
+            end
+        end
+        return closestPlayer
+    end
+
+    	game:GetService"RunService".Stepped:connect(function()
+        if enabled and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+            placemarker.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position+(Plr.Character.HumanoidRootPart.Velocity*getgenv().accomidationfactor))
+        else
+            placemarker.CFrame = CFrame.new(0, 9999, 0)
+        end
+    end)
+
+game:GetService"RunService".Stepped:connect(function()
+        if enabled and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+            Part.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position+(Plr.Character.HumanoidRootPart.Velocity*getgenv().accomidationfactor))
+        else
+            Part.CFrame = CFrame.new(0, 9999, 0)
+        end
+    end)
+
+if getgenv().testing == true then
+    local mt = getrawmetatable(game)
+    local old = mt.__namecall
+    setreadonly(mt, false)
+    mt.__namecall = newcclosure(function(...)
+        local args = {...}
+        if enabled and getnamecallmethod() == "FireServer" and args[2] == "GetMousePos" then
+            args[3] = Plr.Character.HumanoidRootPart.Position+(Plr.Character.HumanoidRootPart.Velocity*getgenv().accomidationfactor)
+            return old(unpack(args))
+        end
+        return old(...)
+    end)
+end
+
+if getgenv().testingg == true then
+    local mt = getrawmetatable(game)
+    local old = mt.__namecall
+    setreadonly(mt, false)
+    mt.__namecall = newcclosure(function(...)
+        local args = {...}
+        if enabled and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+            args[3] = Plr.Character.HumanoidRootPart.Position+(Plr.Character.HumanoidRootPart.Velocity*getgenv().accomidationfactor)
+            return old(unpack(args))
+        end
+        return old(...)
+    end)
+end
+
+if getgenv().autopred == true then
+    local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local split = string.split(pingvalue,'(')
+    local ping = tonumber(split[1])
+    if ping <200 then
+        getgenv().accomidationfactor = 0.173432432343325
+    elseif ping < 150 then
+        getgenv().accomidationfactor = 0.1922
+    elseif ping < 90 then
+        getgenv().accomidationfactor = 0.16
+    elseif ping < 80 then
+        getgenv().accomidationfactor = 0.169
+    elseif ping < 70 then
+        getgenv().accomidationfactor = 0.1355
+    elseif ping < 50 then
+        getgenv().accomidationfactor = 0.125
+    elseif ping < 40 then
+        getgenv().accomidationfactor = 0.12
+    elseif ping < 30 then
+        getgenv().accomidationfactor = 0.12
+    end
+end
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
