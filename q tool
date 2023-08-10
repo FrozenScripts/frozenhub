@@ -8,8 +8,6 @@ vim:SendKeyEvent(true, keytoclick, false, game)
 end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 
-})
-
 local player = game.Players.LocalPlayer
 
 local function connectCharacterAdded()
@@ -21,3 +19,9 @@ connectCharacterAdded()
 player.CharacterRemoving:Connect(function()
     tool.Parent = game.Players.LocalPlayer.Backpack
 end)
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
