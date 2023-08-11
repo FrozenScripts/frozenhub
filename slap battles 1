@@ -1,0 +1,86 @@
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+ 
+local hitBoxes = false
+ 
+local hitSettings = {
+    ["Size"] = Vector3.new(17,15,17),
+    ["Colour3"] = Color3.fromRGB(0,255,255),
+    ["Transparency"] = 0.7
+}
+ 
+local Coasting = loadstring(game:HttpGet(("https://raw.githubusercontent.com/cheesynob39/Coasting/main/Source.lua")))()
+ 
+local ext = Coasting:CreateTab("Extenders")
+local ext1 = ext:CreateSection("Main")
+local ext2 = ext:CreateSection("Config")
+ 
+local Color = ext2:CreateColorPicker("Hitbox Color", Color3.fromRGB(0, 255, 255), function(Colour3)
+    hitSettings["Colour3"] = Colour3
+end)
+ 
+local Size = ext2:CreateSlider("Size", 1, 20, 1, false, function(Size)
+    hitSettings["Size"] = Vector3.new(Size, Size, Size)
+ 
+    if hitSettings["Size"] == Vector3.new(2,2,2) then
+        hitSettings["Size"] = Vector3.new(2,2,1)
+    end
+end)
+ 
+local Transparency = ext2:CreateSlider("Transparency", 0, 1, 0.7, false, function(Transparency1)
+    hitSettings["Transparency"] = Transparency1
+end)
+ 
+local Hitbox = ext1:CreateToggle("Enable Hitboxes", function(isEnabled)
+    hitBoxes = isEnabled
+ 
+    if isEnabled then
+        for i,x in pairs(game.Players:GetPlayers()) do
+            if x ~= game.Players.LocalPlayer and x.Character ~= nil and x.Character:FindFirstChild("HumanoidRootPart") then
+                x.Character:WaitForChild("HumanoidRootPart", 1).Size = hitSettings["Size"]
+                x.Character:WaitForChild("HumanoidRootPart", 1).Color = hitSettings["Colour3"]
+                x.Character:WaitForChild("HumanoidRootPart", 1).Material = "Neon"
+                x.Character:WaitForChild("HumanoidRootPart", 1).Transparency = hitSettings["Transparency"]
+ 
+                x.CharacterAdded:Connect(function(x)
+                    if hitBoxes then
+                        task.wait(.25)
+                        x:WaitForChild("HumanoidRootPart", 1).Transparency = hitSettings["Transparency"]
+                        x:WaitForChild("HumanoidRootPart", 1).Material = "Neon"
+                        x:WaitForChild("HumanoidRootPart", 1).Color = hitSettings["Colour3"]
+                        x:WaitForChild("HumanoidRootPart", 1).Size = hitSettings["Size"]
+                    end
+                end)
+            end
+        end
+    else
+        for i,x in pairs(game.Players:GetPlayers()) do
+            if x ~= game.Players.LocalPlayer and x.Character ~= nil and x.Character:FindFirstChild("HumanoidRootPart") then
+                task.wait(.35)
+                x.Character:WaitForChild("HumanoidRootPart", 1).Size = Vector3.new(2,2,1)
+                x.Character:WaitForChild("HumanoidRootPart", 1).Color = Color3.fromRGB(255,255,255)
+                x.Character:WaitForChild("HumanoidRootPart", 1).Material = "Plastic"
+                x.Character:WaitForChild("HumanoidRootPart", 1).Transparency = 1
+            end
+        end
+    end
+end)
+ 
+game.Players.PlayerAdded:Connect(function(plr)
+    plr.CharacterAdded:Connect(function(x)
+        if hitBoxes then
+            task.wait(.35)
+            x:WaitForChild("HumanoidRootPart", 1).Transparency = hitSettings["Transparency"]
+            x:WaitForChild("HumanoidRootPart", 1).Size = hitSettings["Size"]
+            x:WaitForChild("HumanoidRootPart", 1).Color = hitSettings["Colour3"]
+            x:WaitForChild("HumanoidRootPart", 1).Material = "Neon"
+        end
+    end)
+end)
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
