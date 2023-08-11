@@ -1,8 +1,12 @@
-    game.StarterGui:SetCore("SendNotification", {
-  Title = ".gg/scripters";
-    Text = "join the server lmao";
-    Duration = "7";
-})
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+Notify({
+Description = "discord.gg/productions";
+Title = ".gg/productions join up or gay";
+Duration = 10;
+});
+
+-- Made By .gg/productions!
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
