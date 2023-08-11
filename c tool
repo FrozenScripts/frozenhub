@@ -8,10 +8,12 @@ vim:SendKeyEvent(true, keytoclick, false, game)
 end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 wait(0.2)
-    game.StarterGui:SetCore("SendNotification", {
-  Title = ".gg/scripters";
-    Text = "join the server lmao";
-    Duration = "7";
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+local Notify = AkaliNotif.Notify;
+Notify({
+Description = ".gg/productions";
+Title = "server got termed join up";
+Duration = 10;
 })
 
 local player = game.Players.LocalPlayer
