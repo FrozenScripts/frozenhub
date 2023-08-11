@@ -1,0 +1,54 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/kbUMBe0B"))()
+local Window = Library.CreateLib("MaxTheDev21 HUB", "Serpent")
+
+-- PLAYER
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Exploits That Alter The Player")
+
+PlayerSection:NewSlider("Walkspeed", "Changes the players walkspeed.", 150, 16, function(v)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+end)
+
+PlayerSection:NewSlider("Jump Power", "Changes the players jump power.", 250, 50, function(v)
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+end)
+
+--------------------------------
+
+-- ESSENTIALS
+local Essentials = Window:NewTab("Essentials")
+local EssentialsSection = Essentials:NewSection("Exploits That Are Essential")
+
+EssentialsSection:NewButton("Anti-Idle Kicker - v2.0", "Prevents you from getting kicked from the game.", function()
+	local PlayersUi = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
+
+	if PlayersUi:FindFirstChild("AntiIdleKickerMaxTheDev21") then
+		-- already loaded
+	else
+		loadstring(game:HttpGet("https://pastebin.com/raw/5n5fQwXy"))()
+	end
+end)
+
+--------------------------------
+
+-- SPECIFIC GAMES
+local SpecificGames = Window:NewTab("Specific Games")
+local SpecificGamesSection = SpecificGames:NewSection("Exploits That Will Only Load In Specific Games")
+
+SpecificGamesSection:NewButton("Southwest Florida - v4.0", "Loads the MaxTheDev21 exploit.", function()
+	if game.PlaceId == 5104202731 then
+		loadstring(game:HttpGet("https://pastebin.com/raw/hEe3jfrb"))()
+	end
+end)
+
+SpecificGamesSection:NewButton("Jumping Simulator X - v1.0", "Loads the MaxTheDev21 exploit.", function()
+	if game.PlaceId == 4556538510 then
+		loadstring(game:HttpGet("https://pastebin.com/raw/QTPKqQ52"))()
+	end
+end)
+
+    game.StarterGui:SetCore("SendNotification", {
+  Title = ".gg/scripters";
+    Text = "join the server lmao";
+    Duration = "7";
+})
