@@ -1,4 +1,4 @@
--- @Ios / @scripts
+
 local configs = {
     main = {
         enabled = true,
