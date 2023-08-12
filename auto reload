@@ -10,9 +10,3 @@ if game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool
             end
         end
 end
-
-    game.StarterGui:SetCore("SendNotification", {
-  Title = ".gg/scripters";
-    Text = "join the server lmao";
-    Duration = "7";
-})
